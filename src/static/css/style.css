@@ -1,0 +1,45 @@
+.main-nav .svg-inline--fa{
+    position: relative;
+    margin-right: 5px;
+}
+.main-nav .fa-home{
+    color: #00d1b2;
+}
+.main-nav .fa-eye{
+    color: #3273dc;
+}
+.main-nav__logo{
+    max-height: unset !important;
+    max-width: 185px;
+}
+
+.card-container{
+   height: auto;
+   overflow: hidden;
+}
+
+.card-container--hidden{
+    height: 0;
+}
+
+.card .icon > svg{
+    transform: unset;
+    transition: all .23s ease;
+}
+.icon-svg--rotate{
+    transition: all .23s ease;
+    transform: rotateZ(-90deg);
+}
+.monitors__header{
+    display: flex;
+    justify-content: space-between;
+        align-items: center;
+    margin-bottom: 20px;
+}
+
+.monitors__header-title{
+    margin-bottom: unset !important;
+}
+.monitors__card{
+    margin-bottom: 20px;
+}

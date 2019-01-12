@@ -1,0 +1,68 @@
+{% macro monitor_form() -%}
+<section class="hero is-fullheight monitor-form">
+    <div class="container">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="column is-4 is-offset-4">
+                    <h3 class="title has-text-grey">New Monitor</h3>
+                    <p class="subtitle has-text-grey">Create a monitor to watch the price of multiple products.</p>
+                    <div class="box">
+                        <form action="{{ url_for('monitors.create_monitor') }}" method="post">
+                            <div class="field">
+                                <div class="control">
+                                    <input autofocus="" class="input is-large" name="monitor"
+                                           placeholder="Monitor Name" type="text">
+                                </div>
+                            </div>
+                            <input name="step" type=hidden value="item_step">
+                            <input class="button is-block is-info is-large is-fullwidth"
+                                   type="submit" value="Next">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{%- endmacro %}
+
+{% macro item_form(monitor_name='') -%}
+<section class="hero is-fullheight item-form">
+    <div class="container">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="column is-4 is-offset-4">
+                    <h3 class="title has-text-grey">New Item</h3>
+                    <p class="subtitle has-text-grey">Add the first item to your new monitor: {{ monitor_name }}</p>
+                    <div class="box">
+                        <form method="post">
+                            <div class="field">
+                                <div class="control">
+                                    <input autofocus="" class="input is-large" id="name" name="name"
+                                           placeholder="Item Name" type="text">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="control">
+                                    <input autofocus="" class="input is-large" id="item_url" name="url"
+                                           placeholder="Item URL" type="text">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="control">
+                                    <input autofocus="" class="input is-large" id="css_selector" name="css"
+                                           placeholder="CSS Selector" type="text">
+                                </div>
+                            </div>
+                            <input type=hidden name="monitor" value="{{ monitor_name }}">
+                            <input type=hidden name="step" value="final_step">
+                            <input class="button is-block is-info is-large is-fullwidth"
+                                   type="submit" value="Create">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{%- endmacro %}

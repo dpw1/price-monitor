@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Price Monitor</title>
+    {% include 'html_dependecies.html' %}
+</head>
+<body>
+<header>
+
+    <nav aria-label="main navigation" class="navbar main-nav" role="navigation">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">
+                    <img class="main-nav__logo" src="{{ url_for('static', filename='images/logo-3.png') }}">
+                </a>
+
+                <a aria-expanded="false" aria-label="menu" class="navbar-burger burger" data-target="navbarBasicExample"
+                   role="button">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <div class="navbar-menu" id="navbarBasicExample">
+                <div class="navbar-start">
+                    <a class="navbar-item" href="/">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link" href="{{ url_for('monitors.index') }}">
+                            <i class="far fa-eye"></i> Monitors
+                        </a>
+
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item" href="{{ url_for('monitors.create_monitor') }}">
+                                 <i class="fas fa-plus"></i> Create New
+                            </a>
+                            <a class="navbar-item" href="{{ url_for('users.user_monitors') }}">
+                                <i class="fas fa-tv"></i>My Monitors
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            {% if session['email'] %}
+                            <a class="button is-primary" href="{{ url_for('users.logout_user') }}">
+                                <i class="fas fa-sign-out-alt"></i><strong>Log out</strong>
+                            </a>
+                            <a class="button is-light" href="#">
+                                <i class="fas fa-cog"></i> Settings
+                            </a>
+                            {% else %}
+                            <a class="button is-primary" href="{{ url_for('users.register_user') }}">
+                                <i class="fas fa-sign-in-alt"></i><strong>Create Account</strong>
+                            </a>
+                            <a class="button is-light" href="{{ url_for('users.login_user') }}">
+                                <i class="fas fa-user"></i> Log in
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+</header>
+
+{% block content %}
+
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% from "_macros.html" import item_form, monitor_form %}
+{% block content %}
+{% if step == "monitor_step" %}
+    {{ monitor_form() }}
+{% elif step == "item_step" %}
+    {{ item_form(monitor_name) }}
+{% endif %}
+
+{% endblock %}

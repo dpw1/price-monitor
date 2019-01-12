@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="section monitors">
+    <div class="container">
+        <div class="header monitors__header">
+            <h1 class="title is-2 monitors__header-title">My Monitors</h1>
+            <a class="button is-success" href="{{ url_for('monitors.create_monitor') }}">Create New Monitor</a>
+        </div>
+
+        {% for monitor in monitors %}
+        <div class="card monitors__card">
+            <header class="card-header">
+                <p class="card-header-title">
+                    {{ monitor.name }}
+                </p>
+                <a aria-label="more options" class="card-header-icon" href="#">
+      <span class="icon">
+        <i aria-hidden="true" class="fas fa-angle-down"></i>
+      </span>
+                </a>
+            </header>
+
+            <div class="card-container">
+                <div class="card-content">
+                    <div class="content">
+                        <div class="columns">
+                            {% for item in monitor.items %}
+                            <div class="column is-one-third">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <p class="title is-5">
+                                            <a href="{{item.item_url}}" target="_blank">{{ item.item_name }}</a>
+                                        </p>
+                                        <p class="subtitle is-5">
+                                            {{ item.price }}
+                                        </p>
+                                        <p class="subtitle is-6">
+                                            <b>Created:</b> {{ item.date.strftime('%d/%m/%Y at %H:%M:%S') }}
+                                        </p>
+                                    </div>
+                                    <footer class="card-footer">
+                                        <a class="card-footer-item" href="{{ url_for('items.update_item_price', item_id=item._id) }}">Update</a>
+                                        <a class="card-footer-item" href="{{ url_for('items.delete_item', item_id=item._id) }}">Delete</a>
+                                    </footer>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <footer class="card-footer">
+                    <a class="card-footer-item" href="#">Add New Product</a>
+                    <a class="card-footer-item" href="#">Edit</a>
+                    <a class="card-footer-item" href="#">Delete</a>
+                </footer>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
